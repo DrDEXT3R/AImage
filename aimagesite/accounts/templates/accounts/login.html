@@ -3,18 +3,18 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Signup</title>
+        <title>Login</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
     </head>
     <body>
     {% comment %} start section without template {% endcomment %}
-        <h1>Signup</h1>
-        <form class="site-form" action="{% url 'accounts:signup' %}" method="post">
+        <h1>Log in</h1>
+        <form class="site-form" action="{% url 'accounts:login' %}" method="post">
             {% csrf_token %}
             {{ form }}
-            <input type="submit" value="Signup">
+            <input type="submit" value="Login">
         </form>
     {% comment %} end of section without template {% endcomment %}
         <script src="" async defer></script>
