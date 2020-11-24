@@ -19,7 +19,8 @@
     color: $color_orange;
 }
 /* Link */
-.navbar-default .navbar-nav > li > a {
+.navbar-default .navbar-nav > li > a, 
+#logout_form a {
     color: $color_white;
 	line-height: normal;
 	text-align: center;	
@@ -47,12 +48,6 @@
 .navbar-default ul > li:hover {
 	background-color: $color_orange;
 }
-// @media (min-width: 768px) {
-// 	.navbar-expand-md .navbar-nav .nav-link {
-// 		padding-right: 1rem;
-// 		padding-left: 1rem;
-// 	}
-// }
 .navbar-nav > li{
 	padding-left: .8rem;
 	padding-right: .8rem;

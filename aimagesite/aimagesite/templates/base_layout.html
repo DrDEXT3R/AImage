@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Homepage</title>
+        <title>{% block title %} Homepage {% endblock %} | AImage</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/dist/styles.css' %}">
@@ -15,16 +15,25 @@
     <body>
         <header>
 			<nav class="navbar navbar-default navbar-expand-md">
-				<a class="navbar-brand" href="index.php"><img src="{% static 'images/logo.png' %}" class="d-inline-block mr-1" alt=""> AImage </a>
+				<a class="navbar-brand" href="{% url 'homepage' %}"><img src="{% static 'images/logo.png' %}" class="d-inline-block mr-1" alt=""> AImage </a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="nav toggler">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="mainmenu">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="how-it-works.php"> How It Works </a></li>
-						<li class="nav-item active"><a class="nav-link" href="about-me.php"> About </a></li>
-						<li class="nav-item active"><a class="nav-link" href="{% url 'accounts:login' %}"> Log In </a></li>
-						<li class="nav-item active"><a class="nav-link" href="{% url 'accounts:signup' %}"> Sign Up </a></li>
+						<li class="nav-item active"><a class="nav-link" href="{% url 'howitworks' %}"> How It Works </a></li>
+						<li class="nav-item active"><a class="nav-link" href="{% url 'about' %}"> About </a></li>
+                        {% if user.is_authenticated %}
+                            <li>
+                                <form id="logout_form" class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                                    {% csrf_token %}
+                                    <a class="nav-link" href="javascript:{}" onclick="document.getElementById('logout_form').submit();"> Log Out </a></li>
+                                </form>
+                            </li>
+                        {% else %}
+                            <li class="nav-item active"><a class="nav-link" href="{% url 'accounts:login' %}"> Log In </a></li>
+                            <li class="nav-item active"><a class="nav-link" href="{% url 'accounts:signup' %}"> Sign Up </a></li>
+                        {% endif %}
 					</ul>
 				</div>
 			</nav>	

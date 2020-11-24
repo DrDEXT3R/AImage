@@ -4,10 +4,10 @@ body {
     background-image: url(../../images/dark_mosaic.png); /* Background pattern from Toptal Subtle Patterns */
 }
 
-// body *{
-//     font-family: Ubuntu;
-//     color: #fff;
-// }
+body *{
+    // font-family: Ubuntu;
+    color: $color_white;
+}
 
 // h1, h2, h3, h4, h5 {
 //     font-weight: normal;
