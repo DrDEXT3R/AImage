@@ -1,6 +1,13 @@
 {% extends 'base_layout.html' %}
+{% load static %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/dist/text_animation.css' %}">
+{% endblock %}
 
 {% block content %}
-    <h1>This is the homepage</h1>
-    <p>Welcome on AImage</p>
+    <div class="texts">
+        <span class="text1">AImage</span>
+        <span class="text2">Make your image great again</span>
+    </div>
 {% endblock %}
