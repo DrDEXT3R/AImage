@@ -7,9 +7,9 @@
 /* Title */ 
 .navbar-default .navbar-brand {
 	padding: 0;
-	margin: 0px 0px 5px 10px;
-	font-size: 38px; 
-	font-family: $font-navbar-title;
+	margin: 0px 0px 0px 10px;
+	font-size: 33px; 
+	font-family: $font_title;
 	-webkit-text-stroke-width: thin;
 	color: $color_white;
 }
@@ -42,13 +42,13 @@
 /* Navbar list */
 .navbar-default ul {
 	list-style-type: none;
-	font-size: 25px;
-	font-family: $font-navbar-title;
+	font-size: 20px;
+	font-family: $font_basic;
 }
 .navbar-default ul > li:hover {
 	background-color: $color_orange;
 }
 .navbar-nav > li{
-	padding-left: .8rem;
-	padding-right: .8rem;
+	padding-left: .3rem;
+	padding-right: .3rem;
 }

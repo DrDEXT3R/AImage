@@ -3,8 +3,8 @@
 .texts {
     font-family: $font_title;  
     text-align: center;
-    position: absolute;
-    top: 40%;
+    position: relative;
+    margin-top: clamp(150px, 15%, 15%);
     left: 50%;
     transform: translate(-50%,-50%);
     width: 100%;
