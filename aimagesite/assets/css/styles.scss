@@ -9,6 +9,19 @@ body *{
     color: $color_white;
 }
 
+.container {
+    align-items: center;
+}
+
+#particles-js canvas {
+    display:block;
+    position: fixed;
+    z-index: -1;
+}
+// {
+//     position: relative;
+// }
+
 // h1, h2, h3, h4, h5 {
 //     font-weight: normal;
 //     margin: 0;
