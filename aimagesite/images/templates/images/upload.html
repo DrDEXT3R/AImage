@@ -18,8 +18,9 @@
         <form class="site-form" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
+            <button type="submit">Upload</button>
         </form>
-        <button type="submit">Upload</button>
+
 
 
     </div>
