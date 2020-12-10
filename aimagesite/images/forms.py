@@ -7,4 +7,4 @@ class UploadForm(forms.ModelForm):
 
     class Meta:
         model = Image
-        fields = ["name"]
+        fields = ["name", "header_image"]
