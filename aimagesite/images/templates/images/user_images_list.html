@@ -1,33 +1,41 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base_layout.html' %}
+{% load static %}
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>About</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
-</head>
+{% block title %}Login{% endblock %}
+{% load crispy_forms_tags %}
 
-<body>
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/compiled/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/compiled/table.css' %}">
 
+{% endblock %}
+
+{% block content %}
+
+
+<div class="d-flex justify-content-center">
     {%if images%}
     {%if images.first.author.id == user.id%}
-    <table>
+    <table class="styled-table">
+        <thead>
         <tr>
             <th>Name</th>
             <th>Date</th>
-            <th>image</th>
-
+            <th>Image</th>
+            <th>Improved Image</th>
+        </tr>
+        </thead>
+        
+        <tbody>
         </tr>
         {% for image in images %}
         <tr>
             <td>{{ image.name}}</td>
             <td>{{ image.date_posted | date:"d M Y"}}</td>
             <td><img src="{{ image.header_image.url }}" width="100" height="100"></td>
-
+            <td></td>
         </tr>
+        </tbody>
 
         {% endfor %}
     </table>
@@ -38,13 +46,10 @@
     <h1> No images</h1>
     {%endif%}
 
+</div>
 
+<div class="d-flex justify-content-center">
+<a href="{% url 'images:upload' %}" class="btn btn-primary">Upload image</a>
+</div>
 
-
-
-
-
-
-</body>
-
-</html>
+{% endblock %}
