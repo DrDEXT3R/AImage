@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Days+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+/* Navbar */
+.navbar-default {
+  background-color: #261400;
+}
+
+/* Title */
+.navbar-default .navbar-brand {
+  padding: 0;
+  margin: 0px 0px 0px 10px;
+  font-size: 33px;
+  font-family: Days One, sans-serif;
+  -webkit-text-stroke-width: thin;
+  color: #ffffff;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #ff7a03;
+}
+
+/* Link */
+.navbar-default .navbar-nav > li > a,
+#logout_form a {
+  color: #ffffff;
+  line-height: normal;
+  text-align: center;
+}
+
+/* Mobile version */
+.navbar-default .navbar-toggler {
+  border-color: #ffffff;
+  margin: 0px 10px 0px 0px;
+}
+
+.navbar-default .navbar-collapse {
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-default .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/* Navbar list */
+.navbar-default ul {
+  list-style-type: none;
+  font-size: 20px;
+  font-family: Lato, sans-serif;
+}
+
+.navbar-default ul > li:hover {
+  background-color: #ff7a03;
+}
+
+.navbar-nav > li {
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+}
+
+body {
+  background-image: url(../../images/dark_mosaic.png);
+  /* Background pattern from Toptal Subtle Patterns */
+}
+
+body * {
+  color: #ffffff;
+}
+
+.container {
+  align-items: center;
+}
+
+#particles-js canvas {
+  display: block;
+  position: fixed;
+  z-index: -1;
+}

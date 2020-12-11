@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 
@@ -40,3 +41,37 @@
 </body>
 
 </html>
+=======
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/compiled/text_animation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/compiled/home_upload_form.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="texts">
+            <span class="text1">AImage</span>
+            <span class="text2">Make your image great again</span>
+        </div>
+    </div>
+
+    <div class="upload-wrapper col-sm-12 col-lg-4 mr-auto ml-auto">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" name="upload" value="upload" id="upload" class="btn btn-block btn-primary"><i class="fa fa-fw fa-upload"></i>Improve</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="{% static 'js/set_uploaded_filename.js' %}"></script>
+{% endblock %}
+>>>>>>> develop
