@@ -1,0 +1,53 @@
+@import "variables";
+
+.btn {
+    background-color: $color_orange;
+    color: $color_white;
+    border-color: $color_orange;
+}
+
+.btn:hover, .btn:focus, .btn:active, .btn.active, .open .dropdown-toggle.btn {
+    background-color: $color_orange;
+    color: $color_white;
+    border-color: $color_orange;
+    opacity: 0.8;
+}
+
+.site-form .btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.form-wrapper {
+    background-color:  $color_black_opacity;
+    margin-top: clamp(80px, 10%, 10%);
+    margin-bottom: clamp(80px, 10%, 10%);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 15px;
+    // shadow
+    -webkit-box-shadow: 0px 0px 25px 2px $color_orange_opacity;
+	-moz-box-shadow: 0px 0px 25px 2px $color_orange_opacity;
+	box-shadow: 0px 0px 25px 2px $color_orange_opacity;
+}
+
+.alert-danger {
+    background-color: $color_red;
+    margin-top: 20px;
+}
+
+.alert-danger ul {
+    padding: 0 0 0 15px;
+}
+
+#hint_id_password1 > ul > li {
+    color: $color_grey;
+}
+
+#hint_id_password1 > ul {
+    padding: 0 0 0 20px;
+}
+
+.invalid-feedback > strong {
+    color: $color_red;
+}
