@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Days+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
-.ab {
+.authors {
   position: relative;
 }
 
@@ -59,4 +59,21 @@ img {
 
 .card:hover .hover-content {
   opacity: 1;
+}
+
+.about-text {
+  background-color: red;
+}
+
+.location {
+  background-color: blue;
+}
+
+.logo {
+  background-color: green;
+  padding: 0;
+}
+
+.map {
+  background-color: purple;
 }

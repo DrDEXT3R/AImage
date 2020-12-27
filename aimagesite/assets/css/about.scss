@@ -1,6 +1,6 @@
 @import "variables";
 
-.ab {
+.authors {
   position: relative;
 }
 
@@ -60,3 +60,25 @@ img {
 .card:hover .hover-content {
   opacity: 1;
 }
+
+
+// about text block
+.about-text {
+  background-color: red;
+}
+
+// location
+.location{
+  background-color: blue;
+}
+
+.logo {
+  background-color: green;
+  padding: 0;
+}
+
+
+.map {
+  background-color: purple;
+}
+

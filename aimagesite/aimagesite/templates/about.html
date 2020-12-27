@@ -10,8 +10,7 @@
 {% block content %}
     <h1 class="page-title text-center">About Us</h1>
 
-    <div class="row text-center authors ab">
-
+    <div class="row text-center authors">
         <div class="col-md card">
             <img src="{% static 'images/author1.jpg' %}" class="image" alt="Author1">
             <div class="hover-content">
@@ -57,6 +56,24 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="about-text">
+        block
+    </div>
+
+    <div class="location">
+
+        <div class="row text-center authors">
+            <div class="col-md-3 card logo">
+                <img src="{% static 'images/polsl.png' %}" class="image" alt="Author1">
+            </div>
+            <div class="col-md card map">
+                block
+            </div>
+        </div>
 
     </div>
+
+
 {% endblock %}
