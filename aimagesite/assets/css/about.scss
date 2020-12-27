@@ -40,7 +40,9 @@ img {
 
 .card {
   padding: 0;
-  margin: clamp(2%, 4%, 6%);
+  margin-left: clamp(2%, 4%, 6%);
+  margin-right: clamp(2%, 4%, 6%);
+  margin-top: clamp(2%, 4%, 6%);
   background-color: transparent;
 }
 
@@ -64,7 +66,20 @@ img {
 
 // about text block
 .about-text {
-  background-color: red;
+  // background-color: red;
+  // padding: 0;
+  // margin: 3%;
+
+  background-color:  $color_black_opacity;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.about-text p {
+  line-height: 1.7;
+  font-size: 1.1rem;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 // location
