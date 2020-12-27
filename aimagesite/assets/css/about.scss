@@ -48,7 +48,7 @@ img {
   border-radius: clamp(20px, 30px, 40px);
 }
 
-.card:hover .image {
+.authors .card:hover .image {
   -webkit-filter: brightness(20%);
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -57,7 +57,7 @@ img {
   transition: all 0.3s ease;
 }
 
-.card:hover .hover-content {
+.authors .card:hover .hover-content {
   opacity: 1;
 }
 
@@ -69,16 +69,31 @@ img {
 
 // location
 .location{
-  background-color: blue;
+  // background-color: blue;
 }
 
 .logo {
-  background-color: green;
+  // background-color: green;
   padding: 0;
 }
 
 
 .map {
-  background-color: purple;
+  // background-color: purple;
 }
 
+#mapid { 
+  height: 100%;
+}
+
+#mapid p {
+  color: black;
+  font-weight: bold;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  #mapid { 
+    height: 300px;
+  }
+}
