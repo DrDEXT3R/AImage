@@ -60,35 +60,27 @@
         </div>
     </div>
 
-
-
-<div class="content-block">
-
-    <div class="row text-center">
-        <div class="about-text card">
-            <p>AImage is a website created by three colleagues whose friendship began during their studies.  Daily meetings and long hours spent together in the Silesian University of Technology classes resulted in the idea of creating something really needed. AImage is an example of this. The use of artificial intelligence allows you to work miracles and your images can be great again!</p>
-            <p>AImage is also an open-source project. Everyone can see the source code and (if having the appropriate knowledge) make a small contribution to the future development of the project.
-            We invite everyone interested to our repository, read the README file there and contact with the authors.</p>
-        </div>
-    </div>
-
-    <div class="location">
-
+    <div class="content-block">
         <div class="row text-center">
-            <div class="col-md-3 card logo">
-                <div class="logo-inner">
-                    <img src="{% static 'images/polsl4.png' %}" class="image" alt="SUT">
+            <div class="about-text card">
+                <p><span>AImage</span> is a website created by three colleagues whose friendship began during their studies. Daily meetings and long hours spent together in the <span>Silesian University of Technology</span> classes resulted in the idea of creating something really needed. <span>AImage</span> is an example of this. The use of artificial intelligence allows you to work miracles and <span>your images can be great again!</span></p>
+                <p><span>AImage</span> is also an open-source project. Everyone can see the source code and (if having the appropriate knowledge) make a small contribution to the future development of the project.
+                We invite everyone interested to our <span>repository</span> (<a href="https://github.com/DrDEXT3R/AImage/" target="_blank">here</a>), read the README file there and contact with the authors.</p>
+            </div>
+        </div>
+        <div class="location">
+            <div class="row text-center">
+                <div class="col-md-3 card logo">
+                    <div class="logo-inner">
+                        <img src="{% static 'images/polsl.png' %}" class="image" alt="SUT">
+                    </div>
+                </div>
+                <div class="col-md card map">
+                    <div id="mapid"></div>
                 </div>
             </div>
-            <div class="col-md card map">
-                <div id="mapid"></div>
-            </div>
         </div>
-
     </div>
-
-
-</div>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
     <script src="{% static 'js/map.js' %}"></script>

@@ -68,18 +68,6 @@ img {
   opacity: 1;
 }
 
-
-// about text block
-.about-text {
-  // background-color: red;
-  // padding: 0;
-  // margin: 3%;
-
-  // background-color:  $color_black_opacity;
-  // padding: 15px;
-  // border-radius: 15px;
-}
-
 .about-text p {
   line-height: 1.7;
   font-size: 1.1rem;
@@ -87,26 +75,9 @@ img {
   text-justify: inter-word;
 }
 
-// location
-.location{
-  // background-color: blue;
+.about-text p > span {
+  color: $color_orange;
 }
-
-.logo {
-  // background-color: $color_orange;
-  // padding: 0;
-  // border: 0;
-}
-
-.logo-inner {
-  // background-color: black;
-  // position: relative;
-  // padding: 10px;
-  // margin: 0px;
-  // border-radius: 15% 0px 15% 0px;
-}
-
-
 
 .content-block {
   background-color:  $color_black_opacity;
@@ -121,11 +92,6 @@ img {
   padding-left: 35px;
   padding-top: 10px;
   padding-bottom: 10px;
-}
-
-
-.map {
-  // background-color: purple;
 }
 
 #mapid { 

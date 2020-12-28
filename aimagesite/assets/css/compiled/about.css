@@ -75,6 +75,10 @@ img {
   text-justify: inter-word;
 }
 
+.about-text p > span {
+  color: #ff7a03;
+}
+
 .content-block {
   background-color: rgba(0, 0, 0, 0.75);
   border-color: #ff7a03;
