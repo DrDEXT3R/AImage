@@ -38,7 +38,7 @@ img {
   height: 100%;
 }
 
-.card {
+.authors .card {
   padding: 0;
   margin-left: clamp(2%, 4%, 6%);
   margin-right: clamp(2%, 4%, 6%);
@@ -46,7 +46,12 @@ img {
   background-color: transparent;
 }
 
-.card > img {
+.card {
+  padding: 0;
+  background-color: transparent;
+}
+
+.authors .card > img {
   border-radius: clamp(20px, 30px, 40px);
 }
 
@@ -63,12 +68,6 @@ img {
   opacity: 1;
 }
 
-.about-text {
-  background-color: rgba(0, 0, 0, 0.75);
-  padding: 15px;
-  border-radius: 15px;
-}
-
 .about-text p {
   line-height: 1.7;
   font-size: 1.1rem;
@@ -76,8 +75,19 @@ img {
   text-justify: inter-word;
 }
 
-.logo {
-  padding: 0;
+.content-block {
+  background-color: rgba(0, 0, 0, 0.75);
+  border-color: #ff7a03;
+  border-style: solid;
+  margin: 3%;
+  padding-bottom: 10px;
+}
+
+.content-block .row {
+  padding-right: 35px;
+  padding-left: 35px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #mapid {

@@ -60,6 +60,10 @@
         </div>
     </div>
 
+
+
+<div class="content-block">
+
     <div class="row text-center">
         <div class="about-text card">
             <p>AImage is a website created by three colleagues whose friendship began during their studies.  Daily meetings and long hours spent together in the Silesian University of Technology classes resulted in the idea of creating something really needed. AImage is an example of this. The use of artificial intelligence allows you to work miracles and your images can be great again!</p>
@@ -72,7 +76,9 @@
 
         <div class="row text-center">
             <div class="col-md-3 card logo">
-                <img src="{% static 'images/aei.png' %}" class="image" alt="SUT">
+                <div class="logo-inner">
+                    <img src="{% static 'images/polsl4.png' %}" class="image" alt="SUT">
+                </div>
             </div>
             <div class="col-md card map">
                 <div id="mapid"></div>
@@ -80,6 +86,9 @@
         </div>
 
     </div>
+
+
+</div>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
     <script src="{% static 'js/map.js' %}"></script>
