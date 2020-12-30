@@ -7,10 +7,10 @@ from django.urls import reverse
 
 
 class Image(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField("Name", max_length=100)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default=timezone.now)
-    header_image = models.ImageField(null=True, upload_to="ImagesDB/")
+    header_image = models.ImageField("Image", null=True, upload_to="ImagesDB/")
 
     def __str__(self):
         return self.name

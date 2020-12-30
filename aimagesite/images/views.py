@@ -29,8 +29,6 @@ def upload(request):
     else:
         form = UploadForm()
     return render(request, "images/upload.html", {"form": form})
-"""
-
 
 class ImageUploadView(LoginRequiredMixin, CreateView):
 
@@ -41,6 +39,86 @@ class ImageUploadView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+"""
+
+
+class ImageUploadView(LoginRequiredMixin, FormView):
+
+    form_class = UploadForm
+    template_name = "images/upload.html"
+
+    def get_success_url(self):
+        return reverse("images:image-list", kwargs={"id": self.request.user.id})
+
+    def form_valid(self, form):
+        def _invalidate(msg):
+            form.errors["url"] = [
+                msg,
+            ]
+            form.errors["header_image"] = [
+                msg,
+            ]
+            return super(ImageUploadView, self).form_invalid(form)
+
+        form.instance.author = self.request.user
+
+        if "header_image" in form.data and form.data["url"]:
+            url = form.data["url"]
+            # check if image from url existe
+            domain, path = self.split_url(url)
+            if not self.image_exists(domain, path):
+                return _invalidate(
+                    "Couldn't retreive image. (There was an error reaching the server)"
+                )
+
+            extension = self.get_file_extension(url)
+            fobject = self.retrieve_image(url)
+            pil_image = PILimage.open(fobject)
+            django_file = self.pil_to_django(pil_image)
+            self.imageModel = Image()
+            self.imageModel.name = form.instance.name
+            self.imageModel.author = form.instance.author
+            self.imageModel.header_image.save(
+                form.instance.name + extension, django_file
+            )
+            self.imageModel.save()
+            return super().form_valid(form)
+        elif not ("header_image" in form.data) and not form.data["url"]:
+            self.imageModel = Image()
+            self.imageModel.name = form.instance.name
+            self.imageModel.author = form.instance.author
+            self.imageModel.header_image = form.instance.header_image
+            self.imageModel.save()
+            return super().form_valid(form)
+        elif "header_image" in form.data and not form.data["url"]:
+            return _invalidate("Add Image or add Url")
+        else:
+            return _invalidate("Add either Image or Url not both")
+
+    def retrieve_image(self, url):
+        return BytesIO(urlopen(url).read())
+
+    def pil_to_django(self, image, format="PNG"):
+        fobject = BytesIO()
+        image.save(fobject, format=format)
+        return ContentFile(fobject.getvalue())
+
+    def get_file_extension(self, url):
+        return os.path.splitext(os.path.basename(urlsplit(url).path))[1]
+
+    def image_exists(self, domain, path):
+        try:
+            conn = http.client.HTTPConnection(domain)
+            conn.request("HEAD", path)
+            response = conn.getresponse()
+            conn.close()
+        except:
+            return False
+        return response.status == 200
+
+    def split_url(self, url):
+        parse_object = urlparse(url)
+        return parse_object.netloc, parse_object.path
 
 
 class ImageListView(LoginRequiredMixin, ListView):
