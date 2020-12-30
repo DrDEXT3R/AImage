@@ -5,7 +5,7 @@
 {% load crispy_forms_tags %}
 
 {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'css/compiled/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/compiled/image_delete_form.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -15,7 +15,7 @@
             
                 <h1 class="text-center">Delete Image</h1>
                 <br></br>
-                <form class="site-form" method="POST" enctype="multipart/form-data">
+                <form class="delete-form" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <h4 align="center"> Are you sure you want to delete image: <i>{{object.name}}</i>? 
                     </h4>

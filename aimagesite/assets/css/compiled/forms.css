@@ -1,38 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Days+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
 
-.btn.btn-primary {
+.btn {
   background-color: #ff7a03;
   color: #ffffff;
   border-color: #ff7a03;
 }
 
-.btn.btn-primary:hover,
-.btn.btn-primary:focus,
-.btn.btn-primary:active,
-.btn.btn-primary.active,
-.open .dropdown-toggle.btn.btn-primary {
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
+.open .dropdown-toggle.btn {
   background-color: #ff7a03;
   color: #ffffff;
   border-color: #ff7a03;
   opacity: 0.8;
 }
 
-.site-form .btn.btn-primary {
+.site-form .btn {
   width: 100%;
   margin-top: 10px;
 }
-
-.site-form .btn.btn-outline-danger {
-  width: 40%;
-  margin-left: 10%;
-}
-
-.site-form .btn.btn-outline-secondary {
-  width: 40%;
-  margin-left: 5%;
-}
-
 
 .form-wrapper {
   background-color: rgba(0, 0, 0, 0.75);

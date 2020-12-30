@@ -1,22 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=Days+One&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+@import "variables";
 
 .styled-table {
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
-    font-family: Lato, sans-serif;
+    font-family: $font_basic;
     min-width: 200px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 0 20px $color_black_opacity;
+
     width: 90%;
     margin-top: 10px;
 }
 
+
 .styled-table thead tr {
-    background-color: #ff7a03;
-    color: #ffffff;
+    background-color: $color_orange;
+    color: $color_white;
     text-align: left;
 }
+
 
 .styled-table th,
 .styled-table td {
@@ -24,13 +26,15 @@
 }
 
 .styled-table tbody tr {
-    border-bottom: 2px solid #ff7a03;
+    border-bottom: 2px solid $color_orange;
 }
 
+
 .btn.btn-primary {
-    background-color: #ff7a03;
-    color: #ffffff;
-    border-color: #ff7a03;
+    background-color: $color_orange;
+    color: $color_white;
+    border-color: $color_orange;
+    ;
 }
 
 .btn.btn-primary:hover,
@@ -38,9 +42,9 @@
 .btn.btn-primary:active,
 .btn.btn-primary.active,
 .open .dropdown-toggle.btn.btn-primary {
-    background-color: #ff7a03;
-    color: #ffffff;
-    border-color: #ff7a03;
+    background-color: $color_orange;
+    color: $color_white;
+    border-color: $color_orange;
     opacity: 0.8;
 }
 
@@ -58,23 +62,24 @@
 }
 
 .button-improve:before {
-    content: "Improve";
+    content: 'Improve';
 }
 
 .button-delete:before {
-    content: "Delete";
+    content: 'Delete';
 }
 
-@media (max-width: 991px) {
+
+@media(max-width:991px) {
     .button-improve:before {
-        content: "Improve";
+        content: 'Improve';
         align-content: center;
         text-align: center;
         font-size: 15px;
     }
 
     .button-delete:before {
-        content: "Delete";
+        content: 'Delete';
         font-size: 15px;
         text-align: center;
     }
@@ -92,14 +97,14 @@
     }
 }
 
-@media (min-width: 992px) {
+@media(min-width:992px) {
     .button-improve:before {
-        content: "Improve";
+        content: 'Improve';
         font-size: 17px;
     }
 
     .button-delete:before {
-        content: "Delete";
+        content: 'Delete';
         font-size: 17px;
     }
 }
