@@ -25,7 +25,7 @@
 					<ul class="navbar-nav ml-auto">
                         
                         {% if user.is_authenticated %}
-                        <li class="nav-item active"><a class="nav-link" href="images/list/{{user.id}}"> My images </a></li>
+                        <li class="nav-item active"><a class="nav-link" href="{% url 'images:image-list' user.id %}"> My images </a></li>
                         {% endif %}
 						<li class="nav-item active"><a class="nav-link" href="{% url 'howitworks' %}"> How It Works </a></li>
 						<li class="nav-item active"><a class="nav-link" href="{% url 'about' %}"> About </a></li>
