@@ -1,7 +1,7 @@
 {% extends 'base_layout.html' %}
 {% load static %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Upload{% endblock %}
 {% load crispy_forms_tags %}
 
 {% block stylesheet %}
@@ -19,6 +19,7 @@
                     {% csrf_token %}
                     {{ form|crispy }}
                     <input class="btn btn-primary" type="submit" value="Upload">
+                    <a class="btn btn-primary" href="{% url 'images:upload_from_gd'%}">Upload from Google Drive</a>
                 </form>
             
         </div>

@@ -1,0 +1,48 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block title %}Upload{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+<script type="text/javascript" src="{% static 'js/upload_from_gd.js' %}"></script>
+{% endblock %}
+
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/compiled/gd_upload_form.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-center">
+        <div class="form-wrapper col-sm-9 col-md-6 col-lg-4">
+            <button class="btn btn-primary" onclick="showPickerDialog()">Show Picker Dialog</button>
+            <form class="site-form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                 <div class>
+                  <input type="hidden" name="name" maxlength="20" class="textinput textInput form-control" required="" id="id_name">
+                </div>
+                 <div class>
+                  <input type="hidden" name="file_id" class="textinput textInput form-control" id="id_file_id">
+                </div>
+                
+                <input class="btn btn-primary" type="submit" value="Upload">
+
+             </form>
+      </div>
+    </div>
+
+    <div id="result"></div>
+
+     <!-- The Google API Loader script. -->
+    <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
+
+    <script>
+    function showPickerDialog(){
+        loadPicker()
+    }
+    </script>
+
+
+{% endblock %}
