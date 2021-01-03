@@ -76,8 +76,9 @@
         var fileId = data.docs[0].id;
         var fileName = data.docs[0].name;
         var fileURL = data.docs[0].url;
-        alert('The user selected: ' + fileId);
+        //alert('The user selected: ' + fileId);
         document.getElementById('id_name').value = fileName;
+        document.getElementById('id_name_output').value = fileName;
         //document.getElementById('id_url').value = fileURL;
         document.getElementById('id_file_id').value = fileId;
       }

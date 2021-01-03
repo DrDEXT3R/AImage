@@ -23,6 +23,20 @@
     margin-top: 10px;
 }
 
+.gd-button {
+    width: 50%;
+    margin: auto;
+    display: block;
+}
+
+.output-label {
+    margin-top: 20px;
+}
+
+.textoutput.textOutput.form-control {
+    margin-bottom: 10px;
+}
+
 .form-wrapper {
     background-color: rgba(0, 0, 0, 0.75);
     margin-top: clamp(80px, 10%, 10%);

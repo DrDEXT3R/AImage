@@ -16,12 +16,16 @@
 {% block content %}
     <div class="d-flex justify-content-center">
         <div class="form-wrapper col-sm-9 col-md-6 col-lg-4">
-            <button class="btn btn-primary" onclick="showPickerDialog()">Show Picker Dialog</button>
+            <input type="image" class = "gd-button" name="imgbtn" onclick="showPickerDialog()" src="{% static 'images/google-drive.png' %}" alt="Google Drive">
             <form class="site-form" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
 
                  <div class>
                   <input type="hidden" name="name" maxlength="20" class="textinput textInput form-control" required="" id="id_name">
+                </div>
+                <div class>
+                <label for="id_name_output" class="output-label">Choosen Image</label>
+                  <output type="text" name="name_output" maxlength="20" class="textoutput textOutput form-control" id="id_name_output">
                 </div>
                  <div class>
                   <input type="hidden" name="file_id" class="textinput textInput form-control" id="id_file_id">
