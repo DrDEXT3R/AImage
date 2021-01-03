@@ -168,18 +168,25 @@ class ImageUploadfromGDView(LoginRequiredMixin, FormView):
         # url = form.data["url"]
         # check if image from url existe
         # file_id = "1sCaNcMQJslzCUym96-wNvYOpYfO0Icyg"
+
+        name, extension = self.split_name(form.instance.name)
+
         file_id = form.data["file_id"]
         fobject = self.retrieve_image(file_id)
         pil_image = PILimage.open(fobject)
         django_file = self.pil_to_django(pil_image)
 
         self.imageModel = Image()
-        self.imageModel.name = form.instance.name
+        self.imageModel.name = name
         self.imageModel.author = form.instance.author
         self.imageModel.header_image.save(form.instance.name, django_file)
         self.imageModel.save()
 
         return super().form_valid(form)
+
+    def split_name(self, name):
+        splitted_name = name.split(".")
+        return splitted_name[0], splitted_name[1]
 
     def retrieve_image(self, file_id):
 
