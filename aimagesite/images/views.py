@@ -132,11 +132,29 @@ class ImageListView(LoginRequiredMixin, ListView):
     context_object_name = "images"
 
     def get_queryset(self):
-        return (
-            Image.objects.filter(author=self.kwargs["id"])
-            .order_by("date_posted")
-            .reverse()
-        )
+
+        requested_orderby_column = self.request.GET.get("order_by")
+        if requested_orderby_column:
+            order_by = requested_orderby_column
+        else:
+            order_by = "date_posted"
+
+        requested_sort = self.request.GET.get("sort")
+
+        if requested_sort == "asc":
+            return Image.objects.filter(author=self.kwargs["id"]).order_by(order_by)
+        elif requested_sort == "desc":
+            return (
+                Image.objects.filter(author=self.kwargs["id"])
+                .order_by(order_by)
+                .reverse()
+            )
+        else:
+            return (
+                Image.objects.filter(author=self.kwargs["id"])
+                .order_by(order_by)
+                .reverse()
+            )
 
 
 class ImageDeleteView(LoginRequiredMixin, DeleteView):
@@ -163,8 +181,6 @@ class ImageUploadfromGDView(LoginRequiredMixin, FormView):
 
     def form_valid(self, form):
 
-        form.instance.author = self.request.user
-
         # url = form.data["url"]
         # check if image from url existe
         # file_id = "1sCaNcMQJslzCUym96-wNvYOpYfO0Icyg"
@@ -178,7 +194,7 @@ class ImageUploadfromGDView(LoginRequiredMixin, FormView):
 
         self.imageModel = Image()
         self.imageModel.name = name
-        self.imageModel.author = form.instance.author
+        self.imageModel.author = self.request.user
         self.imageModel.header_image.save(form.instance.name, django_file)
         self.imageModel.save()
 

@@ -16,6 +16,7 @@
     background-color: #ff7a03;
     color: #ffffff;
     text-align: left;
+    font-size: 1.2em;
 }
 
 .styled-table th,
@@ -57,12 +58,29 @@
     width: 45%;
 }
 
+
 .button-improve:before {
     content: "Improve";
 }
 
 .button-delete:before {
     content: "Delete";
+}
+
+div.btn-group {
+    text-align: center;
+    display: inline-block;
+}
+
+
+@media (max-width: 767.98px) {
+    .styled-table thead tr {
+        background-color: #ff7a03;
+        color: #ffffff;
+        text-align: left;
+        font-size: 0.8em;
+    }
+
 }
 
 @media (max-width: 991px) {
