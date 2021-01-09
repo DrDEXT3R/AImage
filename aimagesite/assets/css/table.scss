@@ -1,0 +1,125 @@
+@import "variables";
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: $font_basic;
+    min-width: 200px;
+    box-shadow: 0 0 20px $color_black_opacity;
+
+    width: 90%;
+    margin-top: 10px;
+}
+
+
+.styled-table thead tr {
+    background-color: $color_orange;
+    color: $color_white;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 2px solid $color_orange;
+}
+
+
+.btn.btn-primary {
+    background-color: $color_orange;
+    color: $color_white;
+    border-color: $color_orange;
+    ;
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:focus,
+.btn.btn-primary:active,
+.btn.btn-primary.active,
+.open .dropdown-toggle.btn.btn-primary {
+    background-color: $color_orange;
+    color: $color_white;
+    border-color: $color_orange;
+    opacity: 0.8;
+}
+
+.btn.btn-primary {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.styled-table .btn.btn-primary {
+    width: 45%;
+}
+
+.btn.btn-outline-danger {
+    width: 45%;
+}
+
+.button-improve:before {
+    content: 'Improve';
+}
+
+.button-delete:before {
+    content: 'Delete';
+}
+
+div.btn-group {
+    text-align: center;
+    display: inline-block;
+}
+
+@media (max-width: 767.98px) {
+    .styled-table thead tr {
+        background-color: $color_orange;
+        color: $color_white;
+        text-align: left;
+        font-size: 0.8em;
+    }
+
+}
+
+@media(max-width:991px) {
+    .button-improve:before {
+        content: 'Improve';
+        align-content: center;
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .button-delete:before {
+        content: 'Delete';
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .styled-table .btn.btn-primary {
+        width: 100%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+    .btn.btn-outline-danger {
+        width: 100%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+}
+
+@media(min-width:992px) {
+    .button-improve:before {
+        content: 'Improve';
+        font-size: 17px;
+    }
+
+    .button-delete:before {
+        content: 'Delete';
+        font-size: 17px;
+    }
+}

@@ -1,12 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Days+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+
 .btn {
   background-color: #ff7a03;
   color: #ffffff;
   border-color: #ff7a03;
 }
 
-.btn:hover, .btn:focus, .btn:active, .btn.active, .open .dropdown-toggle.btn {
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
+.open .dropdown-toggle.btn {
   background-color: #ff7a03;
   color: #ffffff;
   border-color: #ff7a03;
@@ -39,14 +44,14 @@
   padding: 0 0 0 15px;
 }
 
-#hint_id_password1 > ul > li {
+#hint_id_password1>ul>li {
   color: #6c757d;
 }
 
-#hint_id_password1 > ul {
+#hint_id_password1>ul {
   padding: 0 0 0 20px;
 }
 
-.invalid-feedback > strong {
+.invalid-feedback>strong {
   color: #ff0000;
 }
