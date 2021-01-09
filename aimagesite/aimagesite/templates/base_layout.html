@@ -36,23 +36,18 @@
                     <li class="nav-item active"><a class="nav-link" href="{% url 'images:image-list' user.id %}"> My
                             Images </a></li>
                     {% endif %}
-                    <li class="nav-item active"><a class="nav-link" href="{% url 'howitworks' %}"> How It Works </a>
-                    </li>
                     <li class="nav-item active"><a class="nav-link" href="{% url 'about' %}"> About </a></li>
                     {% if user.is_authenticated %}
-                    <li>
-                        <form id="logout_form" class="logout-link" action="{% url 'accounts:logout' %}" method="post">
-                            {% csrf_token %}
-                            <a class="nav-link" href="javascript:{}"
-                                onclick="document.getElementById('logout_form').submit();"> Log Out </a>
-                    </li>
-                    </form>
-                    </li>
-                    {% else %}
-                    <li class="nav-item active"><a class="nav-link" href="{% url 'accounts:login' %}"> Log In </a></li>
-                    <li class="nav-item active"><a class="nav-link" href="{% url 'accounts:signup' %}"> Sign Up </a>
-                    </li>
-                    {% endif %}
+                            <li>
+                                <form id="logout_form" class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                                    {% csrf_token %}
+                                    <a class="nav-link" href="javascript:{}" onclick="document.getElementById('logout_form').submit();"> Log Out </a></li>
+                                </form>
+                            </li>
+                        {% else %}
+                            <li class="nav-item active"><a class="nav-link" href="{% url 'accounts:login' %}"> Log In </a></li>
+                            <li class="nav-item active"><a class="nav-link" href="{% url 'accounts:signup' %}"> Sign Up </a></li>
+                        {% endif %}
                 </ul>
             </div>
         </nav>

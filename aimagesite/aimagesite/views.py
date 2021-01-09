@@ -6,6 +6,3 @@ def homepage(request):
     
 def about(request):
     return render(request, 'about.html')
-    
-def howitworks(request):
-    return render(request, 'how_it_works.html')    

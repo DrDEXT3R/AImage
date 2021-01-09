@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Days+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+.authors {
+  position: relative;
+}
+
+.page-title {
+  margin-top: clamp(50px, 5%, 5%);
+}
+
+a > input {
+  border-radius: 25%;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.hover-inner {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.hover-inner > * {
+  width: 100%;
+}
+
+.hover-content {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.authors .card {
+  padding: 0;
+  margin-left: clamp(2%, 4%, 6%);
+  margin-right: clamp(2%, 4%, 6%);
+  margin-top: clamp(2%, 4%, 6%);
+  background-color: transparent;
+}
+
+.card {
+  padding: 0;
+  background-color: transparent;
+}
+
+.authors .card > img {
+  border-radius: clamp(20px, 30px, 40px);
+}
+
+.authors .card:hover .image {
+  -webkit-filter: brightness(20%);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.authors .card:hover .hover-content {
+  opacity: 1;
+}
+
+.about-text p {
+  line-height: 1.7;
+  font-size: 1.1rem;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.about-text p > span {
+  color: #ff7a03;
+}
+
+.content-block {
+  background-color: rgba(0, 0, 0, 0.75);
+  border-color: #ff7a03;
+  border-style: solid;
+  margin: 3%;
+  padding-bottom: 10px;
+}
+
+.content-block .row {
+  padding-right: 35px;
+  padding-left: 35px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#mapid {
+  height: 100%;
+}
+
+#mapid p {
+  color: black;
+  font-weight: bold;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  #mapid {
+    height: 300px;
+  }
+}
