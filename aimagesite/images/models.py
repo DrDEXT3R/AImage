@@ -3,12 +3,10 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 
-# Create your models here.
-
 
 class Image(models.Model):
-    name = models.CharField("Name", max_length=20)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField("Name", max_length=20, null=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     date_posted = models.DateTimeField(default=timezone.now)
     header_image = models.ImageField("Image", null=True, upload_to="ImagesDB/")
 

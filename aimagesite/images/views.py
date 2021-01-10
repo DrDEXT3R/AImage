@@ -19,7 +19,6 @@ from google.oauth2 import service_account
 
 import sys
 
-# Create your views here.
 
 """
 def upload(request):
@@ -45,6 +44,11 @@ class ImageUploadView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 """
 
+def simple_upload(request):
+    if request.method == 'POST':
+        obj = Image.objects.create(header_image=request.FILES['customFile'])
+        obj.save()
+    return render(request, "images/homepage.html")
 
 class ImageUploadView(LoginRequiredMixin, FormView):
 

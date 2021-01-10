@@ -14,5 +14,6 @@ urlpatterns = [
     path("upload_from_gd/", ImageUploadfromGDView.as_view(), name="upload_from_gd"),
     path("list/<int:id>/", ImageListView.as_view(), name="image-list"),
     path("delete/<int:pk>/", ImageDeleteView.as_view(), name="image-delete"),
+    path("", views.simple_upload, name="simple-upload"),
     # path("upload/", views.upload, name="upload"),
 ]
