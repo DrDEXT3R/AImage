@@ -49,6 +49,24 @@ class ImageUploadView(LoginRequiredMixin, CreateView):
 """
 
 
+def like(request, image_id):
+
+    image = get_object_or_404(Image, pk=image_id)
+    image.feedback = 1
+    image.save()
+
+    return HttpResponseRedirect(reverse('images:image-list', args=(request.user.id,)))
+
+
+def dislike(request, image_id):
+    
+    image = get_object_or_404(Image, pk=image_id)
+    image.feedback = 0
+    image.save()
+
+    return HttpResponseRedirect(reverse('images:image-list', args=(request.user.id,)))
+
+
 def upload_and_improve(request):
     if request.method == "POST":
         image = Image.objects.create(header_image=request.FILES["customFile"])

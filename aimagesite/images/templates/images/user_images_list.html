@@ -51,7 +51,8 @@
                 </th>
                 <th>Image</th>
                 <th>Improved Image</th>
-                <th></th>
+                <th>Feedback</th>
+                <th>Action</th>
             </tr>
         </thead>
 
@@ -77,11 +78,26 @@
                     {% endif %}
                 </td>
                 <td>
+                    {% if image.improved_image %}
+                        {% if image.feedback != null %}
+                            Thank you for the feedback!
+                        {% else %}
+                            <a class="btn btn-success" href="{% url 'images:like' image.id%}">  
+                                <span class="button-like">Like</span></a>
+                            <a class="btn btn-danger"  href="{% url 'images:dislike' image.id %}">
+                                <span class="button-dislike">Dislike</span></a>
+                        {% endif %}
+                    {% else %}
+                        Improve to rate
+                    {% endif %}
+                </td>
+                <td>
                     <a class="btn btn-primary" href="{% url 'images:improve' image.id%}">
                         <span class="button-improve"></span></a>
                     <a class="btn btn-outline-danger" href="{% url 'images:image-delete' image.id %}">
                         <span class="button-delete"></span></a>
                 </td>
+                
             </tr>
         </tbody>
 

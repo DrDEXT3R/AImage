@@ -18,4 +18,6 @@ urlpatterns = [
     path("", views.upload_and_improve, name="upload-and-improve"),
     path("<int:image_id>/improve/", views.upload_and_improve, name='improve'),
     path("improve/<int:pk>/", ImageImproveView.as_view(), name="image-result"),
+    path("<int:image_id>/like", views.like, name="like"),
+    path("<int:image_id>/dislike", views.dislike, name="dislike"),
 ]
