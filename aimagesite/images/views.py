@@ -12,6 +12,7 @@ from django.urls import reverse
 from urllib.parse import urlsplit, urlparse
 from django.http import HttpResponse, HttpResponseRedirect
 import os.path
+from django.core.files.images import get_image_dimensions
 import http.client
 import shutil
 import subprocess
@@ -69,6 +70,11 @@ def dislike(request, image_id):
 
 def upload_and_improve(request):
     if request.method == "POST":
+
+        w, h = get_image_dimensions(request.FILES["customFile"])
+        if w > 800 or h > 600:
+            return render(request, "images/homepage.html", {'limit_exceeded':True})
+
         image = Image.objects.create(header_image=request.FILES["customFile"])
         image.save()
 
@@ -76,7 +82,7 @@ def upload_and_improve(request):
 
         return HttpResponseRedirect(reverse("images:image-result", args=(image.id,)))
     else:
-        return render(request, "images/homepage.html")
+        return render(request, "images/homepage.html", {'limit_exceeded':False})
 
 
 def improve(request, image_id):
@@ -110,7 +116,7 @@ def improve_image(image):
     image.save()
 
 
-class ImageImproveView(LoginRequiredMixin, DetailView):
+class ImageImproveView(DetailView):
     model = Image
     template_name = "images/image_improvement.html"
 
