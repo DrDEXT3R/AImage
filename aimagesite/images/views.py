@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import FormView
-from django.views.generic import CreateView, ListView, DeleteView
+from django.views.generic import CreateView, ListView, DeleteView, DetailView
 from .forms import UploadForm, UploadFromGDForm
 from .models import Image
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -10,8 +10,12 @@ from io import BytesIO
 from django.core.files.base import ContentFile
 from django.urls import reverse
 from urllib.parse import urlsplit, urlparse
+from django.http import HttpResponse, HttpResponseRedirect
 import os.path
 import http.client
+import shutil
+import subprocess
+import sys
 
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload
@@ -44,11 +48,64 @@ class ImageUploadView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 """
 
-def simple_upload(request):
-    if request.method == 'POST':
-        obj = Image.objects.create(header_image=request.FILES['customFile'])
-        obj.save()
-    return render(request, "images/homepage.html")
+
+def upload_and_improve(request):
+    if request.method == "POST":
+        image = Image.objects.create(header_image=request.FILES["customFile"])
+        image.save()
+
+        improve_image(image)
+
+        return HttpResponseRedirect(reverse("images:image-result", args=(image.id,)))
+    else:
+        return render(request, "images/homepage.html")
+
+
+def improve(request, image_id):
+
+    image = get_object_or_404(Image, pk=image_id)
+
+    improve_image(image)
+
+    return HttpResponseRedirect(reverse("images:image-result", args=(image.id,)))
+
+def improve_image(image):
+    
+    filename = os.path.split(image.header_image.url)[1]
+    img_dir_path = os.path.join(
+        os.path.split(os.path.abspath(os.path.dirname(__file__)))[0], "media/ImagesDB"
+    )
+    filepath = os.path.join(img_dir_path, filename)
+
+    if not image.improved_image:
+        command = "docker run --rm -v {}:/ne/input alexjc/neural-enhance --zoom=2 input/{}".format(
+            img_dir_path, filename
+        )
+        subprocess.Popen(command, shell=True, stdout=False)
+
+    improved_image_filepath = os.path.join(img_dir_path, filename)
+
+    extension = image.header_image.url.split(".")[1]
+    image.improved_image = image.header_image.url.replace(
+        "." + extension, "_ne2x.png"
+    ).replace("/media/", "")
+    image.save()
+
+
+class ImageImproveView(LoginRequiredMixin, DetailView):
+    model = Image
+    template_name = "images/image_improvement.html"
+
+    def test_func(self):
+        image = self.get_object()
+        if self.request.user == image.author:
+            return True
+        return False
+
+    def get_success_url(self):
+        image = self.get_object()
+        return reverse("images:image-list", kwargs={"id": image.author_id})
+
 
 class ImageUploadView(LoginRequiredMixin, FormView):
 

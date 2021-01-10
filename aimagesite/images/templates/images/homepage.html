@@ -16,7 +16,7 @@
 
 <div class="upload-wrapper col-sm-12 col-lg-4 mr-auto ml-auto">
 
-    <form action="{% url 'images:simple-upload' %}" method="post" enctype="multipart/form-data">
+    <form action="{% url 'images:upload-and-improve' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
             <div class="custom-file">
