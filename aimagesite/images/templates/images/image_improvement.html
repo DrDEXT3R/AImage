@@ -5,37 +5,38 @@
 {% load crispy_forms_tags %}
 
 {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'css/compiled/image_results.css' %}">
+<link rel="stylesheet" href="{% static 'css/compiled/image_results.css' %}">
 {% endblock %}
 
 {% block content %}
 
-    <div class="d-flex justify-content-center">
-        <div class="form-wrapper col-sm-9 col-md-6 col-lg-4">
-            
-            {% if image.improved_image %}
-                <h1 class="text-center">Improvement results</h1>
-            {% else %}
-                <h1 class="text-center">Improving image...</h1>
-            {% endif %}
-            <br></br>
-            <h2 class="text-center">Original</h2>
-            <img src="{{ object.header_image.url }}" width="200" height="200" class="center">
-            <br></br>
-            <h2 class="text-center">Improved</h2>
-            {% if image.improved_image %}
-                <a href="{{ object.improved_image.url }}" download="{{ object.improved_image.url }}" class="thumbnail">
-                    <img src="{{ object.improved_image.url }}" width="200" height="200" class="center" onerror="this.onerror=null;this.src='https://media4.giphy.com/media/3oEjI6SIIHBdRxXI40/200.gif'">
-                </a>
-                
-            {% else %}
-                <img src="{% static 'images/spinner.gif' %}" width="200" height="200" class="center">
-            {% endif %}
-            
-            <br></br>
-                
-        </div>
+<div class="d-flex justify-content-center">
+    <div class="form-wrapper col-sm-9 col-md-6 col-lg-4">
+
+        {% if image.improved_image %}
+        <h1 class="text-center">Improvement results</h1>
+        {% else %}
+        <h1 class="text-center">Improving image...</h1>
+        {% endif %}
+        <br></br>
+        <h2 class="text-center">Original</h2>
+        <img src="{{ object.header_image.url }}" width="200" height="200" class="center">
+        <br></br>
+        <h2 class="text-center">Improved</h2>
+        {% if image.improved_image %}
+        <a href="{{ object.improved_image.url }}" download="{{ object.improved_image.url }}" class="thumbnail">
+            <img src="{{ object.improved_image.url }}" width="200" height="200" class="center"
+                onerror="this.onerror=null;this.src='https://media4.giphy.com/media/3oEjI6SIIHBdRxXI40/200.gif'">
+        </a>
+
+        {% else %}
+        <img src="{% static 'images/spinner.gif' %}" width="200" height="200" class="center">
+        {% endif %}
+
+        <br></br>
+
     </div>
+</div>
 
 
 {% endblock %}

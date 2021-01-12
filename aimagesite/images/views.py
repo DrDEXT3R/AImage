@@ -25,112 +25,6 @@ from google.oauth2 import service_account
 import sys
 
 
-"""
-def upload(request):
-
-    if request.method == "POST":
-        form = UploadForm(request.POST)
-        form.instance.author = request.user
-        # save img from url TODO
-        form.save()
-        return redirect("http://localhost:8000/images/list/" + str(request.user.id))
-    else:
-        form = UploadForm()
-    return render(request, "images/upload.html", {"form": form})
-
-class ImageUploadView(LoginRequiredMixin, CreateView):
-
-    model = Image
-    template_name = "images/upload.html"
-    fields = ["name", "header_image"]
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-"""
-
-
-def like(request, image_id):
-
-    image = get_object_or_404(Image, pk=image_id)
-    image.feedback = 1
-    image.save()
-
-    return HttpResponseRedirect(reverse('images:image-list', args=(request.user.id,)))
-
-
-def dislike(request, image_id):
-    
-    image = get_object_or_404(Image, pk=image_id)
-    image.feedback = 0
-    image.save()
-
-    return HttpResponseRedirect(reverse('images:image-list', args=(request.user.id,)))
-
-
-def upload_and_improve(request):
-    if request.method == "POST":
-
-        w, h = get_image_dimensions(request.FILES["customFile"])
-        if w > 800 or h > 600:
-            return render(request, "images/homepage.html", {'limit_exceeded':True})
-
-        image = Image.objects.create(header_image=request.FILES["customFile"])
-        image.save()
-
-        improve_image(image)
-
-        return HttpResponseRedirect(reverse("images:image-result", args=(image.id,)))
-    else:
-        return render(request, "images/homepage.html", {'limit_exceeded':False})
-
-
-def improve(request, image_id):
-
-    image = get_object_or_404(Image, pk=image_id)
-
-    improve_image(image)
-
-    return HttpResponseRedirect(reverse("images:image-result", args=(image.id,)))
-
-def improve_image(image):
-    
-    filename = os.path.split(image.header_image.url)[1]
-    img_dir_path = os.path.join(
-        os.path.split(os.path.abspath(os.path.dirname(__file__)))[0], "media/ImagesDB"
-    )
-    filepath = os.path.join(img_dir_path, filename)
-
-    if not image.improved_image:
-        command = "docker run --rm -v {}:/ne/input alexjc/neural-enhance --zoom=2 input/{}".format(
-            img_dir_path, filename
-        )
-        subprocess.Popen(command, shell=True, stdout=False)
-
-    improved_image_filepath = os.path.join(img_dir_path, filename)
-
-    extension = image.header_image.url.split(".")[1]
-    image.improved_image = image.header_image.url.replace(
-        "." + extension, "_ne2x.png"
-    ).replace("/media/", "")
-    image.save()
-
-
-class ImageImproveView(DetailView):
-    model = Image
-    template_name = "images/image_improvement.html"
-
-    def test_func(self):
-        image = self.get_object()
-        if self.request.user == image.author:
-            return True
-        return False
-
-    def get_success_url(self):
-        image = self.get_object()
-        return reverse("images:image-list", kwargs={"id": image.author_id})
-
-
 class ImageUploadView(LoginRequiredMixin, FormView):
 
     form_class = UploadForm
@@ -322,3 +216,85 @@ class ImageUploadfromGDView(LoginRequiredMixin, FormView):
         fobject = BytesIO()
         image.save(fobject, format=format)
         return ContentFile(fobject.getvalue())
+
+
+class ImageImproveView(DetailView):
+    model = Image
+    template_name = "images/image_improvement.html"
+
+    def test_func(self):
+        image = self.get_object()
+        if self.request.user == image.author:
+            return True
+        return False
+
+    def get_success_url(self):
+        image = self.get_object()
+        return reverse("images:image-list", kwargs={"id": image.author_id})
+
+
+def like(request, image_id):
+
+    image = get_object_or_404(Image, pk=image_id)
+    image.feedback = 1
+    image.save()
+
+    return HttpResponseRedirect(reverse("images:image-list", args=(request.user.id,)))
+
+
+def dislike(request, image_id):
+
+    image = get_object_or_404(Image, pk=image_id)
+    image.feedback = 0
+    image.save()
+
+    return HttpResponseRedirect(reverse("images:image-list", args=(request.user.id,)))
+
+
+def upload_and_improve(request):
+    if request.method == "POST":
+
+        w, h = get_image_dimensions(request.FILES["customFile"])
+        if w > 800 or h > 600:
+            return render(request, "images/homepage.html", {"limit_exceeded": True})
+
+        image = Image.objects.create(header_image=request.FILES["customFile"])
+        image.save()
+
+        improve_image(image)
+
+        return HttpResponseRedirect(reverse("images:image-result", args=(image.id,)))
+    else:
+        return render(request, "images/homepage.html", {"limit_exceeded": False})
+
+
+def improve(request, image_id):
+
+    image = get_object_or_404(Image, pk=image_id)
+
+    improve_image(image)
+
+    return HttpResponseRedirect(reverse("images:image-result", args=(image.id,)))
+
+
+def improve_image(image):
+
+    filename = os.path.split(image.header_image.url)[1]
+    img_dir_path = os.path.join(
+        os.path.split(os.path.abspath(os.path.dirname(__file__)))[0], "media/ImagesDB"
+    )
+    filepath = os.path.join(img_dir_path, filename)
+
+    if not image.improved_image:
+        command = "docker run --rm -v {}:/ne/input alexjc/neural-enhance --zoom=2 input/{}".format(
+            img_dir_path, filename
+        )
+        subprocess.Popen(command, shell=True, stdout=False)
+
+    improved_image_filepath = os.path.join(img_dir_path, filename)
+
+    extension = image.header_image.url.split(".")[1]
+    image.improved_image = image.header_image.url.replace(
+        "." + extension, "_ne2x.png"
+    ).replace("/media/", "")
+    image.save()
