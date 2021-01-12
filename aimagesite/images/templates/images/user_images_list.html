@@ -26,32 +26,33 @@
                 <th>
                     <div class="btn-group" role="group">
                         Name
-                    <div class="btn-group-vertical">
-                        <a href="?order_by=name&sort=asc">
-                            <i class="fa fa-sort-up"></i>
-                        </a>
-                        <a href="?order_by=name&sort=desc">
-                             <i class="fa fa-sort-down"></i>
-                        </a>
+                        <div class="btn-group-vertical">
+                            <a href="?order_by=name&sort=asc">
+                                <i class="fa fa-sort-up"></i>
+                            </a>
+                            <a href="?order_by=name&sort=desc">
+                                <i class="fa fa-sort-down"></i>
+                            </a>
+                        </div>
                     </div>
-                    </div>
-                 </th>
+                </th>
                 <th>
                     <div class="btn-group" role="group">
                         Date
-                     <div class="btn-group-vertical">
-                        <a href="?order_by=date_posted&sort=asc">
-                            <i class="fa fa-sort-up"></i>
-                        </a>
-                        <a href="?order_by=date_posted&sort=desc">
-                             <i class="fa fa-sort-down"></i>
-                        </a>
-                    </div>
+                        <div class="btn-group-vertical">
+                            <a href="?order_by=date_posted&sort=asc">
+                                <i class="fa fa-sort-up"></i>
+                            </a>
+                            <a href="?order_by=date_posted&sort=desc">
+                                <i class="fa fa-sort-down"></i>
+                            </a>
+                        </div>
                     </div>
                 </th>
                 <th>Image</th>
                 <th>Improved Image</th>
-                <th></th>
+                <th>Feedback</th>
+                <th>Action</th>
             </tr>
         </thead>
 
@@ -61,14 +62,43 @@
             <tr>
                 <td>{{ image.name}}</td>
                 <td>{{ image.date_posted | date:"d M Y"}}</td>
-                <td><img src="{{ image.header_image.url }}" width="100" height="100"></td>
-                <td></td>
                 <td>
-                    <a class="btn btn-primary" href=#>
+                    <a href="{{ image.header_image.url }}" download="{{ image.header_image.url }}" class="thumbnail">
+                        <img src="{{ image.header_image.url }}" width="100" height="100">
+                    </a>
+                </td>
+                <td>
+                    {% if image.improved_image %}
+                    <a href="{{ image.improved_image.url }}" download="{{ image.improved_image.url }}"
+                        class="thumbnail">
+                        <img src="{{ image.improved_image.url }}" width="100" height="100"
+                            onerror="this.onerror=null;this.src='https://media4.giphy.com/media/3oEjI6SIIHBdRxXI40/200.gif'">
+                    </a>
+                    {% else %}
+                    Improve to see the results
+                    {% endif %}
+                </td>
+                <td>
+                    {% if image.improved_image %}
+                    {% if image.feedback != null %}
+                    Thank you for the feedback!
+                    {% else %}
+                    <a class="btn btn-success" href="{% url 'images:like' image.id%}">
+                        <span class="button-like">Like</span></a>
+                    <a class="btn btn-danger" href="{% url 'images:dislike' image.id %}">
+                        <span class="button-dislike">Dislike</span></a>
+                    {% endif %}
+                    {% else %}
+                    Improve to rate
+                    {% endif %}
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'images:improve' image.id%}">
                         <span class="button-improve"></span></a>
                     <a class="btn btn-outline-danger" href="{% url 'images:image-delete' image.id %}">
                         <span class="button-delete"></span></a>
                 </td>
+
             </tr>
         </tbody>
 
