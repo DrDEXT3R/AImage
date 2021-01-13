@@ -165,11 +165,11 @@ This is a fix that must be included in the project version as soon as possible.
 In this chapter we'll describe the most interesting code snippets and features that we think might be useful in other projects.
 
 ### Google Drive
-In this section we will describe how to create the function of uploading images from google drive      
+In this section we will describe how to create the feature of uploading images from google drive      
       
    
 **Creating project in google developer console**   
-The first thing you need to do is create a project in the google developer console. Google developer console you can find here: https://console.developers.google.com/. You can create an account there or log in with your google account, if you have one. The first step is to create new project.   
+The first thing you need to do is create a project in the google developer console. Google developer console you can find [here]( https://console.developers.google.com/). You can create an account there or log in with your google account, if you have one. The first step is to create new project.   
 <img src="doc/google-drive/create_project_1.PNG" width=70%/>
 <img src="doc/google-drive/create_project_2.PNG" width=30%/>  
 <img src="doc/google-drive/create_project_3.PNG" width=30%/>
@@ -180,13 +180,13 @@ The next step is to create credentials. Go to the credentials tab, click *create
  Follow the next steps and complete the necessary informations. **Remember during creating *OAuth consent screen* to add test users who will be able to use the app while it is in test mode** It is also important to add Authorized URIs during creating *OAuth Client ID*. If you'll be using local server, you should specifiy it like that:      
  <img src="doc/google-drive/add_uris.PNG" width=30%/>     
 
- After creating all credentials, you can go to *Dashboard* tab and enable APIS that you want to use in your project. In our project we use *Google Drive API* and *Google Picker API*.        
+ After creating all credentials, you can go to *Dashboard* tab and enable APIs that you want to use in your project. In our project we use *Google Drive API* and *Google Picker API*.        
  <img src="doc/google-drive/enable_apis.PNG" width=70%/>      
    
    
 
 **Google Picker API usage**    
-The Google Picker API is a JavaScript API you can use in your Web apps to enable users to open or upload Google Drive files. A detailed description of this API with examples can be found in the documentation that you can find [here](https://developers.google.com/picker/docs). In our project usage of Google Picker API you can see in [upload_from_gd.js](https://github.com/DrDEXT3R/AImage/blob/release/v1.0/aimagesite/assets/js/upload_from_gd.js). **If you work on our project and want to use Google Picker API from our google project you should write to [diejdablju](https://github.com/diejdablju) and ask to be added as Test user and get needed credentials.** You can also use own google develop console project and add yours own credentials in [upload_from_gd.js](https://github.com/DrDEXT3R/AImage/blob/release/v1.0/aimagesite/assets/js/upload_from_gd.js).      
+The Google Picker API is a JavaScript API you can use in your Web apps to enable users to open or upload Google Drive files. A detailed description of this API with examples can be found in the documentation that you can find [here](https://developers.google.com/picker/docs). In our project usage of Google Picker API you can see in [upload_from_gd.js](https://github.com/DrDEXT3R/AImage/blob/release/v1.0/aimagesite/assets/js/upload_from_gd.js). **If you work on our project and want to use Google Picker API from our google project you should write to [diejdablju](https://github.com/diejdablju) and ask to be added as Test user and get needed credentials.** You can also use own google develop console project and add your own credentials in [upload_from_gd.js](https://github.com/DrDEXT3R/AImage/blob/release/v1.0/aimagesite/assets/js/upload_from_gd.js).      
       
    
    
@@ -248,15 +248,15 @@ First step is to retrive image from google drive. It is done in *retrieve_image*
 
         return fh
 ``` 
-In credz you should write service account credentials from yours google develop console project. If you work on our project and want to use credentials from our google project you should write to [diejdablju](https://github.com/diejdablju) and ask to be added as Test user and get needed credentials.   
-Remember to add *Google Drive API* to your google develop project and needed imports to yours code:   
+In credz you should write service account credentials from your google develop console project. If you work on our project and want to use credentials from our google project you should write to [diejdablju](https://github.com/diejdablju) and ask to be added as Test user and get needed credentials.   
+Remember to add *Google Drive API* to your google develop project and needed imports to your code:   
  ```sh
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload
 from google.oauth2 import service_account
 ```    
 
-Next step is to change dowloaded from google drive image as a byte stream into Image object from Pillow library and change this object into django ContentFile
+Next step is to change downloaded from google drive image as a byte stream into Image object from Pillow library and then change this object into django ContentFile
  ```sh
 pil_image = PILimage.open(fobject)
 django_file = self.pil_to_django(pil_image)
@@ -267,7 +267,7 @@ def pil_to_django(self, image, format="PNG"):
     return ContentFile(fobject.getvalue())
 ```    
    
-Last step is to save image on server 
+Last step is to save image on the server 
  ```sh
 self.imageModel = Image()
 self.imageModel.name = name
