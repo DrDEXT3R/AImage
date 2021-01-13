@@ -140,7 +140,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 In our project we use sqlite3 database. If you want to use different kind of database it's no problem, because Django uses ORM. 
-All you have to do is change the database settings in the aimagesite/aimagesite/settings.py file:   
+All you have to do is change the database settings in the ```aimagesite/aimagesite/settings.py``` file:   
 ![Database settings](doc/db_settings.png)
 
 4. Run local server
