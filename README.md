@@ -63,6 +63,18 @@ The logged in User can also store orginal and improved images on the server.
 #### Result
 TODO  
 ![Result](doc/logo.png)
+#### Upload images from local disk or url
+![](doc/upload_image.png)
+#### Upload images from google drive
+![](doc/upload_image_from_gd.png)
+#### Log in to google drive
+![](doc/logowanie_gd.png)
+#### Select an image from google drive
+![](doc/gd_picker.png)
+#### User images list 
+TODO
+#### Delete image
+![](doc/delete_image.png)
 
 ### Built With
 * [Python 3](https://docs.python.org/3/) - a programming language
