@@ -1,6 +1,6 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![AGPL License][license-shield]][license-url]
 [![Release][release-shield]][release-url]
+[![AGPL License][license-shield]][license-url]
+
 
 <!-- PROJECT LOGO -->
 <br />
@@ -315,8 +315,6 @@ This project is licensed under the GNU Affero General Public License v3.0 - see 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/DrDEXT3R/AImage?color=blue&style=for-the-badge
-[contributors-url]: https://github.com/DrDEXT3R/AImage/graphs/contributors
 [license-shield]: https://img.shields.io/github/license/DrDEXT3R/AImage?style=for-the-badge
 [license-url]: https://github.com/DrDEXT3R/AImage/blob/master/LICENSE
 [release-shield]: https://img.shields.io/github/v/release/DrDEXT3R/AImage?style=for-the-badge
