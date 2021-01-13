@@ -61,8 +61,10 @@ The logged in User can also store orginal and improved images on the server.
 ![Mobile](doc/mobile1.png)
 ![Mobile](doc/mobile2.png)
 #### Result
-TODO  
-![Result](doc/logo.png)
+![Result](doc/example_image_1_before.png)
+![Result](doc/example_image_1_after.png)
+![Result](doc/example_image_2_before.png)
+![Result](doc/example_image_2_after.png)
 #### Upload images from local disk or url
 ![](doc/upload_image.png)
 #### Upload images from google drive
@@ -108,16 +110,16 @@ These instructions allow you to run a copy of the project on your local computer
 
 ### Prerequisites
 1. Python 3
-```
+```sh
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install python3.8
-sudo apt-get install python3-pip
+sudo apt-get install python3.8 
+sudo apt-get install 
 ```
 2. Docker  
-TODO
-3. etc  
-TODO
+```sh
+sudo apt-get install docker.io
+```
 
 ### Installation
 1. Clone the repo
@@ -144,8 +146,6 @@ python manage.py runserver
 ```
 5. Open local server  
 http://127.0.0.1:8000/
-
-TODO docker
 
 <!-- WORKFLOW -->
 ## Workflow
@@ -287,14 +287,6 @@ self.imageModel.author = self.request.user
 self.imageModel.header_image.save(form.instance.name, django_file)
 self.imageModel.save()
 ```    
-
-
-TODO
-### Docker
-Description / steps / code
-
-### etc
-
 
 <!-- AUTHORS -->
 ## Authors
