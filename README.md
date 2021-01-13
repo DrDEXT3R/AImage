@@ -116,16 +116,23 @@ git clone https://github.com/DrDEXT3R/AImage.git
 ```sh
 pip install -r requirements.txt
 ```
-3. Run local server
+3. Create database
 ```sh
 cd aimagesite
+python manage.py makemigrations
+python manage.py migrate
+```
+In our project we use sqlite3 database. If you want to use different kind of database it's no problem, because Django uses ORM. 
+All you have to do is change the database settings in the aimagesite/aimagesite/settings.py file:   
+![Database settings](doc/db_settings.png)
+
+4. Run local server
+```sh
 python manage.py runserver
 ```
-4. Open local server  
+5. Open local server  
 http://127.0.0.1:8000/
 
-
-TODO baza danych  
 TODO docker
 
 <!-- WORKFLOW -->
