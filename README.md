@@ -51,8 +51,8 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-TODO  
-Text about project
+Web application that allows User to improve the quality of low-resolution images using the deep learning model. 
+The logged in User can also store images before and after improving on the server.
 
 ### Demo
 #### Desktop Version
@@ -78,10 +78,16 @@ TODO
 <!-- FEATURES -->
 ## Features
 
-TODO
-- Name of feature 1
-- Name of feature 2
-- etc
+- **User registration and login**
+- **Logged in User feauters**:
+  - Storing images on the server
+  - Loading images from disk, by entering a URL or from Google Drive
+  - Improving images stored on the server using the neural network
+  - Improving images without saving them to the server using the neural network
+  - Adding feedback on image processing results
+- **Not logged in User feauters**:
+  - Improving images (with a size limit) using the neural network without being able to save images to the server 
+- **"Contact" tab with the access map**
 
 <!-- GETTING STARTED -->
 ## Getting Started
