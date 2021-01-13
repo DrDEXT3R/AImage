@@ -170,18 +170,18 @@ In this section we will describe how to create the function of uploading images 
    
 **Creating project in google developer console**   
 The first thing you need to do is create a project in the google developer console. Google developer console you can find here: https://console.developers.google.com/. You can create an account there or log in with your google account, if you have one. The first step is to create new project.   
-<img src="doc/google-drive/create_project_1.png" width=70%/>
-<img src="doc/google-drive/create_project_2.png" width=30%/>  
-<img src="doc/google-drive/create_project_3.png" width=30%/>
+<img src="doc/google-drive/create_project_1.PNG" width=70%/>
+<img src="doc/google-drive/create_project_2.PNG" width=30%/>  
+<img src="doc/google-drive/create_project_3.PNG" width=30%/>
    
 The next step is to create credentials. Go to the credentials tab, click *create credentials* and create all the credentials:  *API key*, *OAuth client ID* and *Service account*   
- <img src="doc/google-drive/create_credentials_1.png" width=70%/>
+ <img src="doc/google-drive/create_credentials_1.PNG" width=70%/>
 
  Follow the next steps and complete the necessary informations. **Remember during creating *OAuth consent screen* to add test users who will be able to use the app while it is in test mode** It is also important to add Authorized URIs during creating *OAuth Client ID*. If you'll be using local server, you should specifiy it like that:      
- <img src="doc/google-drive/add_uris.png" width=30%/>     
+ <img src="doc/google-drive/add_uris.PNG" width=30%/>     
 
  After creating all credentials, you can go to *Dashboard* tab and enable APIS that you want to use in your project. In our project we use *Google Drive API* and *Google Picker API*.        
- <img src="doc/google-drive/enable_apis.png" width=70%/>      
+ <img src="doc/google-drive/enable_apis.PNG" width=70%/>      
    
    
 
