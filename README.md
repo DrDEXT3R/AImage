@@ -39,7 +39,6 @@
       <a href="#implementation-description">Implementation Description</a>
       <ul>
         <li><a href="#google-drive">Google Drive</a></li>
-        <li><a href="#docker">Docker</a></li>
       </ul>
     </li>
     <li><a href="#authors">Authors</a></li>
@@ -86,6 +85,10 @@ The logged in User can also store orginal and improved images on the server.
 * [Django](https://docs.djangoproject.com/en/3.1/) - a high-level Python Web framework
 * [Docker](https://docs.docker.com/) - a containerization technology
 * [Bootstrap](https://getbootstrap.com/docs/4.5/getting-started/introduction/) - a framework for developing responsive and mobile-first websites
+* [Particles.js](https://github.com/VincentGarreau/particles.js/) - a lightweight JavaScript library for creating particles
+* [Leaflet](https://leafletjs.com/reference-1.7.1.html) - a open-source JavaScript library for mobile-friendly interactive maps
+* [OpenStreetMap](https://www.openstreetmap.org/help) - a free, editable map of the whole world 
+* [Google Picker API](https://developers.google.com/picker/docs) - a JavaScript API that allows users to open and upload files in Google Drive.
 * [Neural Enhance](https://github.com/alexjc/neural-enhance) - a deep learning model
 
 
@@ -93,15 +96,15 @@ The logged in User can also store orginal and improved images on the server.
 ## Features
 
 - **User registration and login**
-- **Logged in User feauters**:
+- **Logged in User features**:
   - Storing images on the server
   - Loading images from disk, by entering a URL or from Google Drive
   - Improving images stored on the server using the neural network
   - Improving images without saving them to the server using the neural network
   - Adding feedback on image processing results
-- **Not logged in User feauters**:
+- **Not logged in User features**:
   - Improving images (with a size limit) using the neural network without being able to save images to the server 
-- **"Contact" tab with the access map**
+- **"About" tab with the access map**
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -163,7 +166,7 @@ The main branch on which users' work is assembled.
 Temporary Branches:
 - Feature - ```feature/branch-name```  
 A branch on which all work related to software implementation is performed.
-- Release - ```release/branch-name```  
+- Release - ```release/vX.X```  
 A preparatory branch for the release of the project version.
 - Bug Fix - ```bugfix/branch-name```  
 This is a fix that needs to be implemented.
@@ -205,71 +208,71 @@ The Google Picker API is a JavaScript API you can use in your Web apps to enable
 **Saving the file selected in Google Picker on the server**  
 After clicking on image in Google Picker you get information such file name, file url, file id. You can pass this information from a .js file containing google picker api implementations to the template.   
 [upload_from_gd.js](https://github.com/DrDEXT3R/AImage/blob/release/v1.0/aimagesite/assets/js/upload_from_gd.js)    
-```sh 
-    // A simple callback implementation.
-    function pickerCallback(data) {
-      if (data.action == google.picker.Action.PICKED) {
-        var fileId = data.docs[0].id;
-        var fileName = data.docs[0].name;
-        document.getElementById('id_name').value = fileName;
-        document.getElementById('id_file_id').value = fileId;
-      }
+```js 
+// A simple callback implementation.
+function pickerCallback(data) {
+  if (data.action == google.picker.Action.PICKED) {
+    var fileId = data.docs[0].id;
+    var fileName = data.docs[0].name;
+    document.getElementById('id_name').value = fileName;
+    document.getElementById('id_file_id').value = fileId;
+  }
 ```   
 [upload_from_gd.html](https://github.com/DrDEXT3R/AImage/blob/release/v1.0/aimagesite/images/templates/images/upload_from_gd.html)
-```sh 
-      <div class>
-        <input type="hidden" name="file_id" class="textinput textInput form-control" id="id_file_id">
-      </div>
+```html 
+<div class>
+  <input type="hidden" name="file_id" class="textinput textInput form-control" id="id_file_id">
+</div>
 ```   
 Then you can get this file_id in Django view class associated with this template. In our projects it is [ImageUploadfromGDView](https://github.com/DrDEXT3R/AImage/blob/release/v1.0/aimagesite/images/views.py)   
-```sh 
-        file_id = form.data["file_id"]
-        fobject = self.retrieve_image(file_id)
-        pil_image = PILimage.open(fobject)
-        django_file = self.pil_to_django(pil_image)
+```python 
+file_id = form.data["file_id"]
+fobject = self.retrieve_image(file_id)
+pil_image = PILimage.open(fobject)
+django_file = self.pil_to_django(pil_image)
 ```  
-First step is to retrive image from google drive. It is done in *retrieve_image* function:
- ```sh
-     def retrieve_image(self, file_id):
+First step is to retrieve image from google drive. It is done in *retrieve_image* function:
+ ```python
+def retrieve_image(self, file_id):
 
-        # put json credentials her from service account
-        # More info: https://cloud.google.com/docs/authentication
-        credz = {
-            "type": "service_account",
-            "project_id": **************,
-            "private_key_id": **************,
-            "private_key": **************,
-            "client_email": **************,
-            "client_id": **************,
-            "auth_uri": **************,
-            "token_uri": **************,
-            "auth_provider_x509_cert_url": **************,
-            "client_x509_cert_url": **************,
-        }
+  # put json credentials her from service account
+  # More info: https://cloud.google.com/docs/authentication
+  credz = {
+      "type": "service_account",
+      "project_id": **************,
+      "private_key_id": **************,
+      "private_key": **************,
+      "client_email": **************,
+      "client_id": **************,
+      "auth_uri": **************,
+      "token_uri": **************,
+      "auth_provider_x509_cert_url": **************,
+      "client_x509_cert_url": **************,
+  }
 
 
-        credentials = service_account.Credentials.from_service_account_info(credz)
-        drive_service = build("drive", "v3", credentials=credentials)
+  credentials = service_account.Credentials.from_service_account_info(credz)
+  drive_service = build("drive", "v3", credentials=credentials)
 
-        request = drive_service.files().get_media(fileId=file_id)
-        fh = BytesIO()  # this can be used to keep in memory
-        downloader = MediaIoBaseDownload(fh, request)
-        done = False
-        while done is False:
-            status, done = downloader.next_chunk()
+  request = drive_service.files().get_media(fileId=file_id)
+  fh = BytesIO()  # this can be used to keep in memory
+  downloader = MediaIoBaseDownload(fh, request)
+  done = False
+  while done is False:
+      status, done = downloader.next_chunk()
 
-        return fh
+  return fh
 ``` 
 In credz you should write service account credentials from your google develop console project. If you work on our project and want to use credentials from our google project you should write to [diejdablju](https://github.com/diejdablju) and ask to be added as Test user and get needed credentials.   
 Remember to add *Google Drive API* to your google develop project and needed imports to your code:   
- ```sh
+ ```python
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload
 from google.oauth2 import service_account
 ```    
 
-Next step is to change downloaded from google drive image as a byte stream into Image object from Pillow library and then change this object into django ContentFile
- ```sh
+Next step is to change downloaded from google drive image as a byte stream into Image object from Pillow library and then change this object into Django ContentFile
+ ```python
 pil_image = PILimage.open(fobject)
 django_file = self.pil_to_django(pil_image)
 
@@ -280,7 +283,7 @@ def pil_to_django(self, image, format="PNG"):
 ```    
    
 Last step is to save image on the server 
- ```sh
+ ```python
 self.imageModel = Image()
 self.imageModel.name = name
 self.imageModel.author = self.request.user
