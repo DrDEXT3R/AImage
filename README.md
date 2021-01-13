@@ -74,7 +74,7 @@ The logged in User can also store orginal and improved images on the server.
 #### Select an image from google drive
 ![](doc/gd_picker.png)
 #### User images list 
-TODO
+![](doc/list_view.png)
 #### Delete image
 ![](doc/delete_image.png)
 
@@ -114,7 +114,7 @@ These instructions allow you to run a copy of the project on your local computer
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install python3.8 
-sudo apt-get install 
+sudo apt-get install python3-pip
 ```
 2. Docker  
 ```sh
