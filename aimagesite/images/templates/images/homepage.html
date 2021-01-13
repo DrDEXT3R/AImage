@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+
 <div class="row">
     <div class="texts">
         <span class="text1">AImage</span>
@@ -26,6 +27,10 @@
         </div>
         <input type="submit" value="Submit" class="btn btn-block btn-primary"></input>
     </form>
+
+    {% if no_image %}
+        <div style="padding:20px; text-align: center;"><text style="color:red;" class="text-center">Choose the file to improve!</text></div>
+    {% endif %}
 
     {% if limit_exceeded %}
     <div style="padding:20px; text-align: center;"><text style="color:red;" class="text-center">Image dimensions are too
