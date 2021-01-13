@@ -1,0 +1,33 @@
+@import "navbar";
+
+body {
+    background-image: url(../../images/dark_mosaic.png); /* Background pattern from Toptal Subtle Patterns */
+}
+
+body *{
+    // font-family: Ubuntu;
+    color: $color_white;
+}
+
+.container {
+    align-items: center;
+}
+
+#particles-js canvas {
+    display:block;
+    position: fixed;
+    z-index: -1;
+}
+// {
+//     position: relative;
+// }
+
+// h1, h2, h3, h4, h5 {
+//     font-weight: normal;
+//     margin: 0;
+// }
+
+// a, a:hover, a:visited {
+//     color: #fff;
+//     text-decoration: none;
+// }

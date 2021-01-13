@@ -1,0 +1,22 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block title %}Sign Up{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/compiled/forms.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-center">
+        <div class="form-wrapper col-sm-9 col-md-6 col-lg-4">
+            <h1 class="text-center">Sign Up</h1>
+            <form class="site-form" action="{% url 'accounts:signup' %}" method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input class="btn btn-primary" type="submit" value="Join">
+            </form>
+        </div>
+    </div>
+{% endblock %}

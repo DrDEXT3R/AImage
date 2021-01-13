@@ -1,0 +1,43 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/compiled/text_animation.css' %}">
+<link rel="stylesheet" href="{% static 'css/compiled/home_upload_form.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="texts">
+        <span class="text1">AImage</span>
+        <span class="text2">Make your image great again</span>
+    </div>
+</div>
+
+<div class="upload-wrapper col-sm-12 col-lg-4 mr-auto ml-auto">
+
+    <form action="{% url 'images:upload-and-improve' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <div class="custom-file">
+                <input class="custom-file-input" type="file" id="customFile" name="customFile">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-block btn-primary"></input>
+    </form>
+
+    {% if no_image %}
+        <div style="padding:20px; text-align: center;"><text style="color:red;" class="text-center">Choose the file to improve!</text></div>
+    {% endif %}
+
+    {% if limit_exceeded %}
+    <div style="padding:20px; text-align: center;"><text style="color:red;" class="text-center">Image dimensions are too
+            large!<br> Log in to improve an image of any size.</text></div>
+    {% endif %}
+
+</div>
+
+<script src="{% static 'js/set_uploaded_filename.js' %}"></script>
+{% endblock %}

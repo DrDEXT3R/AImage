@@ -1,0 +1,84 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block title %}About{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/compiled/about.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+{% endblock %}
+
+{% block content %}
+    <h1 class="page-title text-center">About Us</h1>
+
+    <div class="row text-center authors">
+        <div class="col-md card">
+            <img src="{% static 'images/tomasz.jpg' %}" class="image" alt="Author1">
+            <div class="hover-content">
+                <div class="align-middle hover-inner">
+                    <div>
+                        <h2 class="name">Tomasz Strzoda</h2>
+                        <p class="copy">Full-Stack Developer</p>
+                        <a href="https://github.com/DrDEXT3R/" target="_blank">
+                            <input type="image" src="{% static 'images/github.png' %}" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md card">
+            <img src="{% static 'images/dawid.png' %}" class="image" alt="Author1">
+            <div class="hover-content">
+                <div class="align-middle hover-inner">
+                    <div>
+                        <h2 class="name">Dawid Macha</h2>
+                        <p class="copy">Back-End Developer</p>
+                        <a href="https://github.com/diejdablju" target="_blank">
+                            <input type="image" src="{% static 'images/github.png' %}" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md card">
+            <img src="{% static 'images/marek.jpg' %}" class="image" alt="Author1">
+            <div class="hover-content">
+                <div class="align-middle hover-inner">
+                    <div>
+                        <h2 class="name">Marek Hermansa</h2>
+                        <p class="copy">Back-End Developer</p>
+                        <a href="https://github.com/marekhermansa" target="_blank">
+                            <input type="image" src="{% static 'images/github.png' %}" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-block">
+        <div class="row text-center">
+            <div class="about-text card">
+                <p><span>AImage</span> is a website created by three colleagues whose friendship began during their studies. Daily meetings and long hours spent together in the <span>Silesian University of Technology</span> classes resulted in the idea of creating something really needed. <span>AImage</span> is an example of this. The use of artificial intelligence allows you to work miracles and <span>your images can be great again!</span></p>
+                <p><span>AImage</span> is also an open-source project. Everyone can see the source code and (if having the appropriate knowledge) make a small contribution to the future development of the project.
+                We invite everyone interested to our <span>repository</span> (<a href="https://github.com/DrDEXT3R/AImage/" target="_blank">here</a>), read the README file there and contact with the authors.</p>
+            </div>
+        </div>
+        <div class="location">
+            <div class="row text-center">
+                <div class="col-md-3 card logo">
+                    <div class="logo-inner">
+                        <img src="{% static 'images/polsl.png' %}" class="image" alt="SUT">
+                    </div>
+                </div>
+                <div class="col-md card map">
+                    <div id="mapid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="{% static 'js/map.js' %}"></script>
+{% endblock %}

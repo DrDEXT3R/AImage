@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Days+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+.upload-wrapper {
+  margin-top: clamp(300px, 30%, 30%);
+}
+
+.btn {
+  background-color: #ff7a03;
+  color: #ffffff;
+  border-color: #ff7a03;
+}
+
+.btn:hover, .btn:focus, .btn:active, .btn.active, .open .dropdown-toggle.btn {
+  background-color: #ff7a03;
+  color: #ffffff;
+  border-color: #ff7a03;
+  opacity: 0.8;
+}
