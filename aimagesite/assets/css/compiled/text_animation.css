@@ -4,7 +4,7 @@
   font-family: Days One, sans-serif;
   text-align: center;
   position: absolute;
-  margin-top: clamp(150px, 15%, 15%);
+  margin-top: clamp(150px, 15%, 300px);
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
