@@ -131,11 +131,11 @@ git clone https://github.com/DrDEXT3R/AImage.git
 ```
 2. Install the necessary dependencies
 ```sh
+cd aimagesite
 pip install -r requirements.txt
 ```
 3. Create database
 ```sh
-cd aimagesite
 python manage.py makemigrations
 python manage.py migrate
 ```
