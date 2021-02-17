@@ -34,7 +34,11 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#workflow">Workflow</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+      <ul>
+        <li><a href="#branches">Branches</a></li>
+      </ul>
+    <li><a href="#release-history">Release History</a></li>
     <li><a href="#authors">Authors</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
@@ -81,7 +85,6 @@ The logged in User can also store orginal and improved images on the server.
 
 <!-- FEATURES -->
 ## Features
-
 - **User registration and login**
 - **Logged in User features**:
   - Storing images on the server
@@ -93,9 +96,9 @@ The logged in User can also store orginal and improved images on the server.
   - Improving images (with a size limit) using the neural network without being able to save images to the server 
 - **"About" tab with the access map**
 
+
 <!-- GETTING STARTED -->
 ## Getting Started
-
 These instructions allow you to run a copy of the project on your local computer for programming and testing purposes.
 
 ### Prerequisites
@@ -137,11 +140,14 @@ python manage.py runserver
 5. Open local server  
 http://127.0.0.1:8000/
 
-<!-- WORKFLOW -->
-## Workflow
-1. See the [Issues](https://github.com/DrDEXT3R/AImage/issues) and the [Projects](https://github.com/DrDEXT3R/AImage/projects) sections.
-2. Make changes
-3. Open a Pull Request
+
+<!-- Contributing -->
+## Contributing
+1. Check the [Issues](https://github.com/DrDEXT3R/AImage/issues) and the [Projects](https://github.com/DrDEXT3R/AImage/projects) sections
+2. Fork the project
+3. Create your branch (check the *"Branches"* section below for naming convention)
+4. Commit your changes
+4. Open a Pull Request
 
 ### Branches
 Code Flow Branches:
@@ -161,9 +167,19 @@ This is a fix that needs to be implemented.
 This is a fix that must be included in the project version as soon as possible.
 
 
+<!-- RELEASE HISTORY -->
+## Release History
+- **v1.1**
+  * Prepare the application for deployment in a production environment
+  * **REMOVE:** Google Drive feature (due to Google's policy)
+  * **FIX:** Form display on the homepage in high resolutions
+  * **CHANGE:** Update docs
+- **v1.0**
+  * The first proper release
+
+
 <!-- AUTHORS -->
 ## Authors
-
 * **Tomasz Strzoda** - [DrDEXT3R](https://github.com/DrDEXT3R)
 * **Dawid Macha** - [diejdablju](https://github.com/diejdablju)
 * **Marek Hermansa** - [marekhermansa](https://github.com/marekhermansa)
@@ -171,15 +187,12 @@ This is a fix that must be included in the project version as soon as possible.
 
 <!-- LICENSE -->
 ## License
-
 This project is licensed under the GNU Affero General Public License v3.0 - see the [LICENSE](LICENSE) file for details
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 * [alexjc](https://github.com/alexjc)
-
-
 
 
 
