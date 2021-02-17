@@ -37,12 +37,3 @@ class UploadForm(forms.ModelForm):
 
     def valid_url_extension(self, url_text, extension_list=VALID_IMAGE_EXTENSIONS):
         return any([url_text.endswith(e) for e in extension_list])
-
-
-class UploadFromGDForm(forms.ModelForm):
-
-    file_id = forms.TextInput()
-
-    class Meta:
-        model = Image
-        fields = ["name"]

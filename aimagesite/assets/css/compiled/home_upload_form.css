@@ -1,7 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Days+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
 .upload-wrapper {
-  margin-top: clamp(300px, 30%, 30%);
+  margin-top: clamp(300px, 30%, 500px);
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(300px, 50%, 600px);
 }
 
 .btn {
